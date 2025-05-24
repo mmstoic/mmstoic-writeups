@@ -17,3 +17,6 @@ A collection of my CTF writeups.
 #### Binary Exploitation
 - PIE Time
 - PIE Time 2
+
+### PortSwigger Academy
+- File Upload Denylist
