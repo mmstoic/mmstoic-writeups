@@ -189,9 +189,7 @@ function copy(a:int, b:int) { // func3
 
 After analyzing the WAT file, we find that the `copy` function does the following:
 
-
-...
-
+[WORK IN PROGRESS]
 
 ## Remediation
 
