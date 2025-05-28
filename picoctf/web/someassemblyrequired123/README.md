@@ -191,6 +191,10 @@ After analyzing the WAT file, we find that the `copy` function does the followin
 
 [WORK IN PROGRESS]
 
+## Exploitation: Level 4
+
+[WORK IN PROGRESS]
+
 ## Remediation
 
 A vulnerability we see here is that critical information is not secured, and therefore can be easily seen amongst the rest of a binary file. One way to prevent this could be encrypting this data. Or, not making the binary file available to the client is also an option.
