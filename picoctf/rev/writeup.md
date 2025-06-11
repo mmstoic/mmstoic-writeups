@@ -6,7 +6,7 @@ We are given a binary named "bin". We are given no hints.
 
 ## Exploitation
 
-Opening the file in Ghidra, we can begin analyzing its inner workings. Let's look at the `main` function (some parts truncated for brevity):
+Opening the file in Ghidra, we can begin analyzing it. Let's look at the `main` function (some parts truncated for brevity):
 
 ```text
 /* WARNING: Removing unreachable block (ram,0x0010170c) */
@@ -149,8 +149,7 @@ pcVar2 = (char *)std::string::operator[]((ulong)local_208);
 ```
 
 Above, we see that pcVar2 is assigned local_208, and earlier local_208 was assigned 5, so pcVar2 is 5. We check: if 5 < the ASCII value of B, do local_248 += local_c8. Earlier, 
-we see that local_248 is the beginning part of the flag and locl_c8 is 'e'. So, we see that our flag string becomes: picoCTF{wELF_d0N3_mate_e . Therefore, we can conclude that we must 
-go through the rest of the assignments and if statements to complete the flag! Let's go through each section:
+we see that local_248 is the beginning part of the flag and locl_c8 is 'e'. So, we see that our flag string becomes: picoCTF{wELF_d0N3_mate_e . Therefore, we can conclude that we must go through the rest of the assignments and if statements to complete the flag! Let's go through each section:
 
 ```
 pcVar2 = (char *)std::string::operator[]((ulong)local_a8);
@@ -159,10 +158,10 @@ pcVar2 = (char *)std::string::operator[]((ulong)local_a8);
   }
 ```
 
-pcVar2 = local_a8 = 6; local_68 = 9
-if 6 != 'A', then append local_68
-It is true that 6 != 'A' ('A' is 65)
-So append 9: picoCTF{wELF_d0N3_mate_e9
+- pcVar2 = local_a8 = 6 local_68 = 9
+- if 6 != 'A', then append local_68
+- It is true that 6 != 'A' ('A' is 65)
+- So append 9: picoCTF{wELF_d0N3_mate_e9
 
 ```
 pcVar2 = (char *)std::string::operator[]((ulong)local_1c8);
@@ -173,9 +172,9 @@ pcVar2 = (char *)std::string::operator[]((ulong)local_1c8);
   }
 ```
 
-pcVar2 = local_1c8 = 3; cVar1 = 3; pcVar2 = local_148 = e
-if (3 - 'e' == 3), append local_1c8
-This is false, so don't append.
+- pcVar2 = local_1c8 = 3; cVar1 = 3; pcVar2 = local_148 = e
+- if (3 - 'e' == 3), append local_1c8
+- This is false, so don't append.
 
 ```
 std::string::operator+=(local_248,local_1e8);
@@ -186,18 +185,26 @@ std::string::operator+=(local_248,local_1e8);
   }
 ```
 
-Append local_1e8 = d: picoCTF{wELF_d0N3_mate_e9d
-Append local_188 = a: picoCTF{wELF_d0N3_mate_e9da
-pcVar2 = local_168 = a
-if 'a' == 'G'
+- Append local_1e8 = d: picoCTF{wELF_d0N3_mate_e9d
+- Append local_188 = a: picoCTF{wELF_d0N3_mate_e9da
+- pcVar2 = local_168 = a
+- if 'a' == 'G', append local_186. This is not true so don't append
 
-NOT DONE YET!!!
+```
+  std::string::operator+=(local_248,local_1a8);
+  std::string::operator+=(local_248,local_88);
+  std::string::operator+=(local_248,local_228);
+  std::string::operator+=(local_248,local_128);
+  std::string::operator+=(local_248,'}');
+```
 
+- Append local_1a8 = 2
+- Append local_88 = c
+- Append local_228 = 0
+- Append local_128 = e
+- Append '}'
 
-
- 
-## Remediation
-
+So our final flag is: picoCTF{wELF_d0N3_mate_e9da2c0e}
 
 # Sources/Credits
 
