@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orion Mission Control</title>
+    <style>
+        body { font-family: Arial; background: #1a1a1a; color: #fff; text-align: center; padding-top: 50px; }
+        .login-container { background: #333; padding: 20px; max-width: 400px; margin: 0 auto; border-radius: 8px; }
+        input { margin: 10px; padding: 8px; width: 200px; }
+        button { background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        .flash { color: red; margin: 10px; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Orion Mission Control Login</h2>
+        <!-- Note to self: Username: intern123 Password: weakpassword456 -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <div><input type="text" name="username" placeholder="Username" required></div>
+            <div><input type="password" name="password" placeholder="Password" required></div>
+            <div><button type="submit">Login</button></div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orion Mission Control</title>
+    <style>
+        body { font-family: Arial; background: #1a1a1a; color: #fff; text-align: center; padding-top: 50px; }
+        .mission-container { background: #333; padding: 20px; max-width: 600px; margin: 0 auto; border-radius: 8px; }
+        .alert { color: red; font-size: 24px; margin: 20px 0; }
+        button { background: #ff4444; color: white; padding: 15px 30px; border: none; border-radius: 4px; cursor: pointer; }
+        button:disabled { background: #666; cursor: not-allowed; }
+        #flag-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                     background: #444; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="mission-container">
+        <h2>Orion Mission Control Center</h2>
+        <div class="alert">
+            🚨 CRITICAL ALERT: Mission has gone wrong! We need admin authorization to abort! 🚨
+        </div>
+        <button onclick="abortMission()" {% if not is_admin %}disabled{% endif %}>
+            ABORT MISSION
+        </button>
+    </div>
+    <div id="flag-modal"></div>
+
+    <script>
+        function abortMission() {
+            fetch('/get_flag' + window.location.search)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.flag) {
+                        const modal = document.getElementById('flag-modal');
+                        modal.style.display = 'block';
+                        modal.innerHTML = `<h3>Mission Aborted!</h3><p>${data.flag}</p>`;
+                    }
+                });
+        }
+    </script>
+</body>
+</html>
