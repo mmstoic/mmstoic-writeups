@@ -31,8 +31,10 @@ def mission():
     admin_params = request.args.getlist('admin')
     is_admin = False
     
-    # Vulnerable check - if any parameter is True, grant admin access
-    if 'True' in admin_params and len(admin_params) > 1:
+    # Vulnerable check - first True blocks, !False grants access
+    if admin_params and admin_params[0] == 'True':
+        is_admin = False
+    elif 'True' in admin_params:
         is_admin = True
     
     return render_template('mission.html', is_admin=is_admin)
@@ -40,7 +42,9 @@ def mission():
 @app.route('/get_flag')
 def get_flag():
     admin_params = request.args.getlist('admin')
-    if 'True' in admin_params and len(admin_params) > 1:
+    if admin_params and admin_params[0] == 'True':
+        return {'error': 'Nice try! But you need to be an admin!'}
+    elif 'True' in admin_params:
         return {'flag': FLAG}
     return {'error': 'Nice try! But you need to be an admin!'}
 
