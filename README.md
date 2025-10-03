@@ -1,6 +1,8 @@
 # mmstoic-writeups
 A collection of my CTF writeups.
 
+### CSAW CTF Quals 2025
+- orion-override
 
 ### LACTF
 - mavs-fan
@@ -23,3 +25,4 @@ A collection of my CTF writeups.
 
 ### PortSwigger Academy
 - File Upload Denylist
+
