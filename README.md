@@ -1,8 +1,11 @@
 # mmstoic-writeups
 A collection of my CTF writeups.
 
-### Pwn College: Advent of Pwn 2025
-- Day 2
+### Pwn College
+- Advent of Pwn 2025: Day 2
+- Advent of Pwn 2025: Day 3
+- Advent of Pwn 2025: Day 4
+- Advent of Pwn 2025: Day 5
 
 ### CSAW CTF Quals 2025
 - orion-override
