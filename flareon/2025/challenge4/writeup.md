@@ -1,4 +1,4 @@
-# FLARE-On 2025: Challenge 4
+# FLARE-On 2025: Challenge 4 (in progress)
 
 ## Context
 
@@ -54,6 +54,7 @@ Opening up the binary in IDA, I first did a scan of the disassembly to map out t
 # Sources/Credits
 
 Written by Madalina Stoicov
+
 
 
 
