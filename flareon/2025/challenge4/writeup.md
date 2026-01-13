@@ -6,7 +6,7 @@ We are just provided with a file `UnholyDragon-150.exe`.
 
 ## Background Information
 
-## Vulnerability
+## Analysis
 
 We begin as always by inspecting the given file. I ran `file` and was met with nothing particularly useful:
 
@@ -38,13 +38,22 @@ Additionally, I ran the fixed binary was got 4 more Unholy Dragon files in my cu
 -a----         1/11/2026   8:57 PM        2721792 UnholyDragon-154.exe
 ```
 
+I then experimented by removing latter Unholy Dragon files and found that only files up to #154 would generate. Additionally, in order to create a new Unholy Dragon file, there can't be one of that number already present in the given directory.
 
-## Exploitation
+I believe that a thorough basic static analysis can save you a lot of time, so I opened the binary in CFF explorer to see what function it was using to get the name of an Unholy Dragon file (assuming it needs to get this name in order to make a new file of a slightly different name). The binary was found to use GetFullPathNameW, GetModuleFileNameW, and CopyFileW which would all be useful to look for. 
+
+## Reversing
+
+Opening up the binary in IDA, I first did a scan of the disassembly to map out the layout of the binary and name some subroutines, and then I jumped into looking for where GetFullPathNameW was called. 
+
+
+
 
 ## Remediation
 
 # Sources/Credits
 
 Written by Madalina Stoicov
+
 
 
