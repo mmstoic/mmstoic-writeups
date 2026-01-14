@@ -73,7 +73,7 @@ We see that we are prompted to patched some bytes and then enter a license key. 
 
 Popping the binary into IDA, I found the spot in the logic that deals with reading the flag. There is a `jnz` to jump to an "incorrect license key" function, but if the license key is correct, the code just continues as normal and executes the (appropriately named) win function which reads and prints the flag:
 
-![jnz] (./images/jnz.PNG)
+![jnz](./images/jnz.PNG)
 
 We can simply patch the `jnz` and its offset to 2 NOP bytes, and we can do this with the patching provided to us by the challenge. The offset in the program that this `jnz` occurs at is 1BCC and 1BCD, so we can patch both of these to NOPs. I still used a garbage license key value.
 
@@ -125,5 +125,6 @@ pwn.college{ flag redacted :) }
 # Sources/Credits
 
 Written by Madalina Stoicov
+
 
 
