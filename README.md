@@ -6,6 +6,10 @@ A collection of my CTF writeups.
 - Advent of Pwn 2025: Day 3
 - Advent of Pwn 2025: Day 4
 
+#### Dojos: Program Security
+##### Reverse Engineering
+- Patched Up (Easy)
+
 ### CSAW CTF Quals 2025
 - orion-override
 
