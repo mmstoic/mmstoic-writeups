@@ -92,6 +92,8 @@ The byte has been changed: *0x62c700d39bcd = 90.
 ...
 ```
 ```
+...
+
 Ready to receive your license key!
 
 12345
@@ -125,6 +127,7 @@ pwn.college{ flag redacted :) }
 # Sources/Credits
 
 Written by Madalina Stoicov
+
 
 
 
